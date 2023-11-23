@@ -9,8 +9,17 @@ import java.util.List;
 @RestController
 public class BookController {
 
+  private BookService bookService;
+
+  public BookController(final BookService bookService) {
+    this.bookService = bookService;
+  }
+
   @GetMapping("books")
   public ResponseEntity<Books> allBooks(){
-    return ResponseEntity.ok(new Books(List.of()));
+    List<Book> allBooks = bookService.getAllBooks();
+    return ResponseEntity.ok(new Books(allBooks));
   }
+
+
 }

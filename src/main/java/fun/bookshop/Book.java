@@ -1,4 +1,4 @@
 package fun.bookshop;
 
-public record Book() {
+public record Book(String name) {
 }
