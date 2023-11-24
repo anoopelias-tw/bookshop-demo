@@ -28,4 +28,9 @@ jobs:
     steps:
     - run: echo "build"
 
+  scan:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "build"
 
