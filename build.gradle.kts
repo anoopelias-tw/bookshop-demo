@@ -4,7 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.1.5"
 }
 
-group = "fun.example.orders"
+group = "fun.example.bookshop"
 version = "1.0-SNAPSHOT"
 
 repositories {
