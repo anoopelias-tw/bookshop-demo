@@ -41,3 +41,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "deploy"
+
+  sanity:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy"
