@@ -16,10 +16,13 @@ public class BookEntity {
 
   String name;
 
+  public String author;
+
   public BookEntity(Integer bookId,
-                    String name) {
+                    String name, String author) {
     this.bookId = bookId;
     this.name = name;
+    this.author = author;
   }
 
   public BookEntity() {

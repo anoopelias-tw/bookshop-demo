@@ -11,7 +11,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -35,12 +34,20 @@ public class BookControllerTest {
   @Test
   void shouldReturnBook() throws Exception {
     Mockito.when(bookService.getAllBooks())
-        .thenReturn(List.of(new Book("Alchemist")));
+        .thenReturn(List.of(new Book("Alchemist", "Paulo Coelho")));
 
     mockMvc.perform(get("/books"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.books[0].name").value("Alchemist"));
   }
 
+  @Test
+  void shouldReturnAuthorBook() throws Exception {
+    Mockito.when(bookService.getAllBooks())
+        .thenReturn(List.of(new Book("Alchemist", "Paulo Coelho")));
 
+    mockMvc.perform(get("/books"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.books[0].author").value("Paulo Coelho"));
+  }
 }
