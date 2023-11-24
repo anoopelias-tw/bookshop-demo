@@ -1,4 +1,4 @@
-name: Dev
+name: QA
 
 on:
   workflow_run:
