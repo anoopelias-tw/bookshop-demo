@@ -21,3 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "build"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test"
+
