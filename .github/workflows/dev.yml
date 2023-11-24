@@ -34,3 +34,10 @@ jobs:
     steps:
       - run: echo "build"
 
+  deploy:
+    needs:
+        - build
+        - scan
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy"
