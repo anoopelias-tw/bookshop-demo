@@ -7,9 +7,11 @@ import org.jose4j.jwt.JwtClaims;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.keys.resolvers.HttpsJwksVerificationKeyResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 public class AuthInterceptor implements HandlerInterceptor {
+
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -20,7 +22,9 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
 
         try {
-            request.setAttribute("userId", verifyToken(authorization, "http://localhost:8090/default/jwks"));
+            String userId = verifyToken(authorization, "http://localhost:8090/default/jwks");
+            request.setAttribute("userId", userId);
+            System.out.println("User id " + userId);
         } catch (InvalidTokenException e) {
             response.setStatus(401);
             return false;
@@ -48,4 +52,5 @@ public class AuthInterceptor implements HandlerInterceptor {
             throw new InvalidTokenException();
         }
     }
+
 }
